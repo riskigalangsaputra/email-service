@@ -4,6 +4,7 @@ import id.kingra.email_service.service.EmailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -16,6 +17,7 @@ public class EmailServiceImpl implements EmailService {
         this.javaMailSender = javaMailSender;
     }
 
+    @Async
     @Override
     public void sendingEmail(String to, String subject, String body) {
         log.debug("send to : {}, subject : {}, body : {}", to, subject, body);
